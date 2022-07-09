@@ -11,10 +11,12 @@ services:
       - ./node:/usr/src/app
 
   db:
-    build:
-      context: mysql
+    image: mysql
     container_name: mysql-db
     restart: always
     tty: true
     volumes: 
-      - ./mysql/src:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
+    environment: 
+      - MYSQL_DATABASE=nodeappdb
+      - MYSQL_ROOT_PASSWORD=root
