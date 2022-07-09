@@ -1,12 +1,24 @@
 const express = require('express');
+const nunjucks = require('nunjucks');
 
-const PORT = 3000;
+const APP_PORT = 3000;
+
 const app = express();
-
-app.get('/', (req, res) => {
-  res.send('<h1>Full Cycle Rocks!</h1>')
+nunjucks.configure('src/views', {
+  autoescape: true,
+  express: app
 })
 
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+app.get('/', (req, res) => {
+  const users = [
+    {
+      name: 'Yan',
+    }
+  ]
+
+  res.render('home.njk', { users })
+})
+
+app.listen(APP_PORT, () => {
+  console.log(`Node app listening on port ${APP_PORT}`)
 })
