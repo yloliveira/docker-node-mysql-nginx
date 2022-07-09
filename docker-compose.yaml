@@ -7,6 +7,8 @@ services:
     container_name: node-app
     ports: 
       - "3000:3000"
+    volumes:
+      - ./node:/usr/src/app
 
   db:
     build:
@@ -14,4 +16,5 @@ services:
     container_name: mysql-db
     restart: always
     tty: true
-    
+    volumes: 
+      - ./mysql/src:/var/lib/mysql
