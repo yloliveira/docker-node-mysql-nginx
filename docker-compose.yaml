@@ -7,3 +7,11 @@ services:
     container_name: node-app
     ports: 
       - "3000:3000"
+
+  db:
+    build:
+      context: mysql
+    container_name: mysql-db
+    restart: always
+    tty: true
+    
