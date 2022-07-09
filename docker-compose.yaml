@@ -4,11 +4,16 @@ services:
   app:
     build:
       context: node
+    image: node
     container_name: node-app
     ports: 
       - "3000:3000"
     volumes:
       - ./node:/usr/src/app
+    networks: 
+      - node-app-network
+    depends_on:
+      - db
 
   db:
     image: mysql
@@ -17,6 +22,12 @@ services:
     tty: true
     volumes: 
       - ./mysql:/var/lib/mysql
+    networks: 
+      - node-app-network
     environment: 
       - MYSQL_DATABASE=nodeappdb
       - MYSQL_ROOT_PASSWORD=root
+
+networks: 
+  node-app-network:
+    driver: bridge
