@@ -1,7 +1,15 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
+const mysql = require('mysql');
 
 const APP_PORT = 3000;
+
+const MYSQL_CONFIG = {
+  host: 'db',
+  user: 'root',
+  password: 'root',
+  database: 'nodeappdb',
+};
 
 const app = express();
 nunjucks.configure('src/views', {
@@ -9,15 +17,13 @@ nunjucks.configure('src/views', {
   express: app
 })
 
-app.get('/', (req, res) => {
-  const users = [
-    {
-      name: 'Yan',
-    }
-  ]
+const connection = mysql.createConnection(MYSQL_CONFIG);
 
-  res.render('home.njk', { users })
-})
+app.get('/', (req, res) => {
+  connection.query("SELECT * FROM users", (err, users) => {
+    res.render('home.njk', { users })
+  });
+});
 
 app.listen(APP_PORT, () => {
   console.log(`Node app listening on port ${APP_PORT}`)
