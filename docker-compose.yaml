@@ -36,7 +36,7 @@ services:
     networks: 
       - node-app-network
     environment: 
-      - MYSQL_DATABASE=nodeappdb
+      - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=root
 
 networks: 

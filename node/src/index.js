@@ -8,7 +8,7 @@ const MYSQL_CONFIG = {
   host: 'db',
   user: 'root',
   password: 'root',
-  database: 'nodeappdb',
+  database: 'nodedb',
 };
 
 const app = express();
@@ -20,7 +20,7 @@ nunjucks.configure('src/views', {
 const connection = mysql.createConnection(MYSQL_CONFIG);
 
 app.get('/', (req, res) => {
-  connection.query("SELECT * FROM users", (err, users) => {
+  connection.query("SELECT * FROM people", (err, users) => {
     res.render('home.njk', { users })
   });
 });
