@@ -11,6 +11,7 @@
 
 OBS.:
   - A aplicação consome dados do database `nodedb` na tabela `people`, que tem a seguinte estrutura:
+  
 | Field | Type | Null | Key | Default | Extra |
 |--|--|--|--|--|--|
 | id | int | NO | PRI | NULL | auto_increment |
