@@ -14,4 +14,4 @@ OBS.:
 | Field | Type | Null | Key | Default | Extra |
 |--|--|--|--|--|--|
 | id | int | NO | PRI | NULL | auto_increment |
-| name | varchar(255) | YES | | NULL | |
+| name | varchar(255) | YES |  | NULL |  |
