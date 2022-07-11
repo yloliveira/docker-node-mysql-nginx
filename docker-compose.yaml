@@ -18,6 +18,8 @@ services:
       context: node
     image: node
     container_name: node-app
+    volumes:
+      - /usr/src/app
     networks: 
       - node-app-network
     depends_on:
